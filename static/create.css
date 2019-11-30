@@ -1,0 +1,45 @@
+th,
+td {
+    border: 3px solid black;
+    padding: 10px;
+}
+
+th {
+    background-color: #484d6d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 130%;
+    color: white;
+}
+
+td {
+    background-color: #efe9f4;
+}
+
+table {
+    opacity: 0.8;
+    border: 4px solid black;
+    margin-top: 3%;
+}
+
+.break {
+    border: 0px;
+    font-size: 200%;
+}
+
+th,
+td {
+    text-align: center;
+}
+
+table {
+    opacity: 0.8;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
