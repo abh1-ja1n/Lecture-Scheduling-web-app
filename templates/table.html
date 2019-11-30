@@ -1,0 +1,77 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="../static/create.css">
+<table>
+
+        <tr>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        {% for slot in slot_times %}
+            {% if slot not in time_slots %}
+            <tr>
+                <td>{{slot}}</td>
+                <td style="border: 0px"></td>
+                <td style="border: 0px"></td>
+                <td style="border: 0px"><h2>BREAK</h2> </td>
+                <td style="border: 0px"></td>
+                <td style="border: 0px"></td>
+            </tr>
+            {% else %}
+            <tr>
+            <td>{{slot}}</td>
+                <td><h3>
+                    {% if slot in s.timetable["Mon"] %}
+                    {% for sl in s.timetable["Mon"][slot] %}
+                        {% if sl[0]==class_name %}
+                            {{sl[1]}}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </h3></td>
+                <td><h3>
+                    {% if slot in s.timetable["Tues"] %}
+                    {% for sl in s.timetable["Tues"][slot] %}
+                        {% if sl[0]==class_name %}
+                            {{sl[1]}}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </h3></td>
+                <td><h3>
+                    {% if slot in s.timetable["Wed"] %}
+                    {% for sl in s.timetable["Wed"][slot] %}
+                        {% if sl[0]==class_name %}
+                            {{sl[1]}}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </h3></td>
+                <td><h3>
+                    {% if slot in s.timetable["Thurs"] %}
+                    {% for sl in s.timetable["Thurs"][slot] %}
+                        {% if sl[0]==class_name %}
+                            {{sl[1]}}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </h3></td>
+                <td><h3>
+                    {% if slot in s.timetable["Fri"] %}
+                    {% for sl in s.timetable["Fri"][slot] %}
+                        {% if sl[0]==class_name %}
+                            {{sl[1]}}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </h3></td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+</table>
+{% endblock %}

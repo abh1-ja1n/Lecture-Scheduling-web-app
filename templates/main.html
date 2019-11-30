@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Lecture-Scheduler</title>
+</head>
+<style>
+    .header h1 a{
+    color: #2e4756;
+    text-decoration: none;
+    }
+    .header {
+        opacity: 0.8;
+
+    }
+</style>
+<body>
+    <div class="header">
+        <div class="drop-down">
+            <img class="logo" src="../static/table-icon-15.jpg">
+            <div class="dropdown-content">
+                <ul>
+                    <li><a href="{{url_for('select')}}">Open</a></li>
+                    <li><a href="#">Manage</a>
+                        <ul>
+                            <li><a href="{{url_for('slots')}}">Slots</a></li>
+                            <li><a href="{{url_for('subjects')}}">Subjects</a></li>
+                            <li><a href="{{url_for('teachers')}}">Teachers</a></li>
+                            <li><a href="{{url_for('classes')}}">Classes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{url_for('help')}}">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <h1><a href="{{url_for('index')}}">LECTURE SCHEDULER</a></h1>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

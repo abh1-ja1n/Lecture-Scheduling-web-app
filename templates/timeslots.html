@@ -1,0 +1,81 @@
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    table{
+        border: 4px solid black;
+        margin-top: 3%;
+        opacity: 0.8;
+        margin-left: 30%;
+        width:40%;
+    }
+    th, td {
+        text-align: center;
+        border: 3px solid black;
+        padding: 15px;
+    }
+    td{
+        background-color: #efe9f4;
+    }
+    th{
+        background-color: #484d6d;
+        color: white;
+    }
+    input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin-left:35%;
+        margin-top: 20px;
+    border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type=button], select{
+    width: 30%;
+        margin-left:35%;
+    background-color: #4CAF50;
+     color: white;
+        margin-top: 20px;
+     padding: 14px 20px;
+    border: none;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+    button {
+    width: 30%;
+        margin-left:35%;
+    background-color: #4CAF50;
+     color: white;
+        margin-top: 20px;
+     padding: 14px 20px;
+    border: none;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+    .container
+    {
+        margin-left:35%;
+        color: white;
+        font-size: 20px;
+    }
+</style>
+<table>
+    <tr>
+    <th>Time-Slots</th> <th>Type</th>
+    </tr>
+    {% for i in range(l) %}
+    <tr>
+    <td>{{slot_times[i]}}</td><td>{{options[i]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="{{url_for('slots')}}" method="post">
+    <input type="text" name="slot" placeholder="Enter a slot for the class"><br><br>
+    <label class="container"><input type="radio" name="type" value="Class" checked> Class<br></label>
+    <label class="container"><input type="radio" name="type" value="Break"> Break<br></label>
+    <br>
+    <button>Submit</button>
+</form>
+
+{% endblock %}

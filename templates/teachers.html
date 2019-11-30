@@ -1,0 +1,92 @@
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    table{
+        border: 2px solid black;
+        margin-top: 3%;
+        margin-left: 30%;
+        width:40%;
+        opacity: 0.8;
+    }
+    th, td {
+        text-align: center;
+        padding: 15px;
+    }
+    td{
+        background-color: #efe9f4;
+    }
+    th{
+        background-color: #484d6d;
+        color: white;
+    }
+    input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin-left:35%;
+        margin-top: 20px;
+    border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+    width: 30%;
+        margin-left:35%;
+    background-color: #4CAF50;
+     color: white;
+        margin-top: 20px;
+     padding: 14px 20px;
+    border: none;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+    table .update{
+        background-color: #4CAF50;
+     color: white;
+         border: none;
+             padding: 14px 20px;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+</style>
+<table>
+    <tr>
+    <th>Teacher name</th>
+    <th>Subject Code</th>
+    {% for i in teacher_names %}
+    <tr>
+    <td>{{i[0]}}</td><<td>{% for j in i[1] %} {{j}} {% endfor %}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="{{url_for('teachers')}}" method="post">
+    <input type="text" name="teacher_name" placeholder="Enter the name of the teacher">
+    <br>
+    <select name="subject_code" placeholder="Enter the name of the subject">
+        {% for sub in subject_names %}
+        <option value="{{sub.name}}">{{sub.name}}</option>
+        {% endfor %}</select>
+    <br>
+    <button>Submit</button>
+</form>
+
+<table>
+    {% for teacher in teachers %}
+    <tr>
+        <td>
+            {{teacher.teacher_name}}
+        </td>
+        <td>
+            {{teacher.subject_name}}
+        <td>
+            <form method="POST" action="./delete_teacher" style="display: inline">
+              <input type="hidden" value="{{teacher.teacher_name}}" name="teacher_name">
+              <input class="update" type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

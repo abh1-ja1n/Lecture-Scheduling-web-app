@@ -1,0 +1,92 @@
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    table{
+        border: 2px solid black;
+        margin-top: 3%;
+        margin-left: 30%;
+        width:40%;
+        opacity: 0.8;
+    }
+    th, td {
+        text-align: center;
+        border: 3px solid black;
+        padding: 15px;
+    }
+    td{
+        background-color: #efe9f4;
+    }
+    th{
+        background-color: #484d6d;
+        color: white;
+    }
+    input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin-left:35%;
+        margin-top: 20px;
+    border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type=button], select{
+    width: 30%;
+        margin-left:35%;
+    background-color: #4CAF50;
+     color: white;
+        margin-top: 20px;
+     padding: 14px 20px;
+    border: none;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+    button {
+    width: 30%;
+        margin-left:35%;
+    background-color: #4CAF50;
+     color: white;
+        margin-top: 20px;
+     padding: 14px 20px;
+    border: none;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+	table .update{
+        background-color: #4CAF50;
+     color: white;
+         border: none;
+             padding: 14px 20px;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+</style>
+
+
+<form action="{{url_for('classes')}}" method="post">
+	<input type = "text" name = "class_name" placeholder="Class">
+	<input type = "text" name = "subject_name" placeholder="Subject">
+    <button>Submit</button>
+</form>
+
+
+<table>
+	{% for lecture in lectures %}
+	<tr>
+		<td>
+			{{lecture.class_name}}
+		</td>
+		<td>
+			{{lecture.subject_name}}
+		</td>
+		<td>
+           	<form method="POST" action="./delete_lecture" style="display: inline">
+              <input type="hidden" value="{{lecture.subject_name}}" name="subject_name">
+           	  <input class="update" type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

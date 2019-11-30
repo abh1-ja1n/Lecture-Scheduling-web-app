@@ -1,0 +1,93 @@
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    table{
+        border: 2px solid black;
+        margin-top: 3%;
+        margin-left: 15%;
+        width:75%;
+        opacity: 0.8;
+    }
+    tr{
+        height: 75px;
+    }
+    td {
+        text-align: center;
+        border: 3px solid black;
+        width:20px;
+        background-color: #efe9f4;
+    }
+
+    .input {
+    width: 30%;
+    padding: 12px 20px;
+    margin-left:35%;
+        margin-top: 20px;
+    border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    #add {
+    width: 30%;
+        margin-left:35%;
+    background-color: #4CAF50;
+     color: white;
+        margin-top: 20px;
+     padding: 14px 20px;
+    border: none;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+    table .update{
+        background-color: #4CAF50;
+     color: white;
+         border: none;
+             padding: 14px 20px;
+        border-radius: 4px;
+    cursor: pointer;
+    }
+    table .up{
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 12px 20px;
+    }
+
+</style>
+
+<form method="POST" action="{{url_for('subjects')}}">
+    <input class=input type="text" placeholder="Enter the name of the subject" name="name">
+    <input class=input type="text" name="frequency_" placeholder="Enter the frequency of classes per week">
+    <input id="add" type="submit" value="Add">
+</form>
+
+
+<table>
+      {% for subject in subjects %}
+        <tr>
+          <td>
+            {{subject.name}}
+          </td>
+          <td>
+            {{subject.frequency}}
+          </td>
+          <td>
+            <form method="POST" action="./update">
+              <input type="hidden" value="{{subject.name}}" name="oldname">
+              <input type="text" class="up" value="{{subject.name}}" name="newname">
+              <input type="hidden" value="{{subject.frequency}}" name="oldfreq">
+              <input type="text" class="up" value="{{subject.frequency}}" name="newfreq">
+              <input class="update" type="submit" value="Update">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="./delete">
+              <input type="hidden" value="{{subject.name}}" name="name">
+              <input class="update" type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+{% endblock %}
