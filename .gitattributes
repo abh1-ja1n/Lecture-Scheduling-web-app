@@ -1,2 +1,2 @@
-*.C linguist-language=Python
-*.H linguist-language=Python
+*.py linguist-language=Python
+*.html linguist-language=HTML
