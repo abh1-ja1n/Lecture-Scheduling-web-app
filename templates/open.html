@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    #class{
+        margin-left:15%;
+        font-size: 70px;
+        color: #f1f1f1;
+        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        float: left;
+    }
+    .class ul{
+        list-style: none;
+        margin-left: 20%;
+        float:left;
+    }
+    .class ul li a{
+        text-decoration: none;
+        color: #f1f1f1;
+    }
+    .class ul li{
+       font-size: 50px;
+       font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    #teacher{
+        padding-left:60%;
+        font-size: 70px;
+        color: #f1f1f1;
+        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .teacher ul{
+        list-style: none;
+        padding-left: 70%;
+    }
+    .teacher li a{
+        text-decoration: none;
+        color: #f1f1f1;
+    }
+    .teacher ul li {
+        font-size: 50px;
+        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+</style>
+<h1 id="class">Select Class</h1>
+<h1 id="teacher">Select Teachers</h1>
+<div class="class">
+    <ul>
+    {% for class in class_names.keys() %}
+         <li><a href ="{{url_for('open',class_name=class)}}">{{class}}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="teacher">
+    <ul>
+    {% for teacher in teacher_names %}
+         <li><a href="{{url_for('opent',teacher_name=teacher[0])}}">{{teacher[0]}}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
